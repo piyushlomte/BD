@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surprise Wishes for My Best Friend</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #f8ffae 0%, #43c6ac 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      background: rgba(255,255,255,0.95);
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(60,60,60,0.15);
+      padding: 2.5rem 2rem;
+      max-width: 350px;
+      width: 100%;
+      text-align: center;
+      transition: box-shadow 0.3s;
+    }
+    h1 {
+      margin-bottom: 1.2rem;
+      color: #2d3a4b;
+      font-size: 2rem;
+    }
+    input[type="password"] {
+      padding: 0.7rem;
+      width: 80%;
+      border: 1px solid #b2bec3;
+      border-radius: 8px;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      outline: none;
+      transition: border 0.2s;
+    }
+    input[type="password"]:focus {
+      border: 1.5px solid #43c6ac;
+    }
+    button {
+      padding: 0.7rem 1.2rem;
+      border: none;
+      border-radius: 8px;
+      background: #43c6ac;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      margin: 0.3rem;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background: #2d3a4b;
+    }
+    .hint {
+      display: none;
+      margin-top: 1rem;
+      background: #f8ffae;
+      color: #2d3a4b;
+      border-radius: 8px;
+      padding: 0.8rem;
+      font-size: 0.98rem;
+      box-shadow: 0 2px 8px rgba(67,198,172,0.08);
+    }
+    .error {
+      color: #e17055;
+      margin-top: 0.7rem;
+      font-size: 0.98rem;
+    }
+    .wishes {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 300px;
+      animation: fadeIn 1.2s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .heart {
+      color: #ff7675;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      animation: heartbeat 1.2s infinite;
+    }
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      20%, 60% { transform: scale(1.2); }
+      40%, 80% { transform: scale(0.95); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="password-container">
+    <h1>Enter the Secret Password</h1>
+    <input type="password" id="password-input" placeholder="Password" autocomplete="off" />
+    <br />
+    <button onclick="checkPassword()">Submit</button>
+    <button onclick="showHint()">Hint</button>
+    <div class="hint" id="hint-box">
+      <strong>Hint:</strong><br>
+      • 12-letter word<br>
+      • Uppercase letters: M and B<br>
+      • Composed of 3 words<br>
+      • Word 1: 2 letters<br>
+      • Word 2: 4 letters<br>
+    </div>
+    <div class="error" id="error-msg"></div>
+  </div>
+
+  <script>
+    function showHint() {
+      document.getElementById('hint-box').style.display = 'block';
+    }
+    function checkPassword() {
+      const input = document.getElementById('password-input').value;
+      const errorMsg = document.getElementById('error-msg');
+      if (input === 'MyBestfriend') {
+        window.location.href = 'https://piyushlomte.github.io/BDgift/';
+      } else {
+        errorMsg.textContent = 'Oops! That\'s not the right password. Try again!';
+      }
+    }
+    document.getElementById('password-input').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') checkPassword();
+    });
+  </script>
+</body>
+</html> 
